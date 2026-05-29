@@ -125,3 +125,12 @@ Important: MailerLite is used for subscriber capture and welcome/update automati
 - Keep background videos optimized, ideally under 10–20 MB.
 - Use Cloudinary optimized image URLs for large cover libraries.
 - Export JSON backups regularly from admin.
+
+## Netlify Blobs required env vars
+If `/.netlify/functions/sanctum-data` shows a Blobs environment error, confirm these exact env vars are set and redeploy with Clear cache:
+
+- `NETLIFY_SITE_ID`
+- `NETLIFY_AUTH_TOKEN`
+- `ADMIN_KEY`
+
+The functions now pass `siteID` and `token` explicitly to Netlify Blobs.

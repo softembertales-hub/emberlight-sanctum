@@ -1,5 +1,14 @@
 const { getStore } = require('@netlify/blobs');
 
+function getBlobStore(){
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const token = process.env.NETLIFY_AUTH_TOKEN || process.env.NETLIFY_BLOBS_TOKEN;
+  if (!siteID || !token) {
+    throw new Error('Netlify Blobs credentials missing. Set NETLIFY_SITE_ID and NETLIFY_AUTH_TOKEN in Netlify environment variables, then clear-cache redeploy.');
+  }
+  return getStore({ name: 'emberlight-sanctum', siteID, token });
+}
+
 function json(status, body){
   return {statusCode:status,headers:{'content-type':'application/json','cache-control':'no-store'},body:JSON.stringify(body)};
 }
@@ -76,7 +85,7 @@ exports.handler = async (event) => {
     return json(422,{error:'Name, valid email, and message are required.'});
   }
 
-  const store = getStore('emberlight-sanctum');
+  const store = getBlobStore();
   const CONTACTS_KEY = 'sanctum-contacts-v31';
   const existing = await store.get(CONTACTS_KEY,{type:'json'}).catch(()=>null) || [];
   existing.unshift(submission);
