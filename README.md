@@ -78,3 +78,30 @@ Test this on a preview branch before merging to main.
 ## Notes
 
 The data function reads from the new `sanctum-state-v51` Blob key and falls back to legacy `sanctum-state-v31`, so existing saved data should load and migrate in the browser.
+
+
+## v5.2 Consolidated Fix Package
+
+Includes fixes from preview testing:
+- Honored/Burning Bright rendering and cover fallback improvements.
+- Absolute asset path handling for logos and decree seals on /records/* pages.
+- Archives entry placeholder removed and stuck blur transition removed.
+- Archives filter simplified: atmosphere filter removed, sort options added.
+- Audio icon hides when no site-controlled audio exists on the current page.
+- Correspondence and record thoughts forms collapsed by default, smaller, darker, and more readable.
+- Admin dashboard stat cards open Records with relevant filters.
+- Records management filters expanded.
+- Import preview adds stats, cover thumbnails, strict duplicate handling, and update/skip only for duplicates.
+- Save confirmations retained via toast messages.
+- Cloudinary media uploads expanded for logos, footer logo, favicon, decree seals, atmosphere visuals/audio, homepage audio, archive audio, and covers.
+
+Required environment variables remain:
+- ADMIN_KEY
+- NETLIFY_SITE_ID
+- NETLIFY_AUTH_TOKEN
+- MAILERLITE_API_KEY
+- MAILERLITE_GROUP_NAME
+
+Optional:
+- MAILERLITE_GROUP_ID
+- NETLIFY_BLOBS_TOKEN
