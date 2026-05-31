@@ -1,136 +1,80 @@
-# Emberlight Sanctum v3.1
+# Emberlight Sanctum v5.1 Complete Build
 
-A Netlify-ready immersive Sanctum archive for SoftEmberTales.
+This package is based on the current working GitHub source and replaces the older room-based prototype with the locked Sanctum architecture.
 
-## What is included
+## Public experience
 
-- Immersive entrance with video/fallback background
-- Optional audio ambience
-- Admin panel at `/admin.html`
-- Backend-first shared Netlify persistence using Netlify Blobs
-- Cloudinary upload support from admin
-- Manual record creation/editing
-- Scout Ledger JSON importer
-- Gilded/Sterling-only import rule
-- Veiled ignored; missing decree ignored; Flicker/Ash ignored during Scout import
-- Automatic decree seal assignment
-- Per-record field visibility toggles
-- Scrollable book detail modal
-- Search/filter/sort/load-more archive tools
-- Contact Chamber with Netlify Forms collection and MailerLite subscriber capture
+- Homepage with Hero, Ember Altar, Burning Bright, immersive Archive entry, Write to the Archivist, and footer.
+- Separate `/archives` room with search and filters.
+- Individual record URLs at `/records/<slug>`.
+- Record pages with The Premise, Granted Entry Because, Featured Quote, Lingering Echoes, Hidden Ember, Hidden Beyond the Veil, Listening Companion, Seek the Record, Share Your Thoughts, and Decree.
+- Empty sections do not render.
+- Audio toggle uses 🔉 / 🔇 and remembers visitor preference.
+- Footer supports Return to the Threshold and SoftEmberTales phoenix logo.
 
-## Deployment steps
+## Admin
 
-1. Upload this folder to GitHub.
-2. Create a new Netlify site from the GitHub repo.
-3. In Netlify, go to **Site configuration → Environment variables**.
-4. Add:
+Admin page: `/admin.html`
 
-```text
-ADMIN_KEY=your-private-admin-passphrase
-```
+Sections:
 
-5. Deploy.
-6. Open:
+- Dashboard
+- Records
+- Imports
+- Ember Altar
+- Atmospheres & Audio
+- Settings
+
+Saves are immediate to the shared Netlify Blob store. There is no global Save Changes to Site button.
+
+## Required Netlify environment variables
 
 ```text
-https://your-site.netlify.app/admin.html
+ADMIN_KEY
+NETLIFY_SITE_ID
+NETLIFY_AUTH_TOKEN
+MAILERLITE_API_KEY
+MAILERLITE_GROUP_NAME
 ```
 
-7. Enter the same `ADMIN_KEY` to unlock admin.
-
-## Important sync behavior
-
-Admin changes sync across devices only after clicking:
-
-**Save Changes to Site**
-
-This saves to Netlify Blobs. After saving, changes appear on laptop, phone, and other browsers.
-
-## Cloudinary uploads
-
-To upload media from the admin panel:
-
-1. Create a free Cloudinary account.
-2. Find your **cloud name**.
-3. Create an **unsigned upload preset**.
-4. Enter both in **Admin → Media**.
-5. Upload image/video/audio.
-6. Copy or assign the returned URL.
-
-You can also paste any external URL or local path without Cloudinary.
-
-Examples:
+Optional:
 
 ```text
-assets/media/sanctum-bg.mp4
-assets/audio/ambient.mp3
-https://example.com/cover.jpg
+MAILERLITE_GROUP_ID
+NETLIFY_BLOBS_TOKEN
 ```
 
-## Scout Ledger import
+`NETLIFY_AUTH_TOKEN` is enough for Blobs if `NETLIFY_SITE_ID` is set.
 
-Use **Admin → Scout Import**.
+## Import schema
 
-Rules:
-
-- Imports only `Gilded` and `Sterling`
-- Ignores missing decree
-- Ignores `Flicker`, `Ash`, and obsolete `Veiled`
-- Uses as many matching fields as possible
-- Imported records become independent Sanctum records
-- Duplicates are detected by normalized title + author
-
-## Decree seals
-
-Default seal paths:
+CSV/XLSX columns:
 
 ```text
-assets/seals/gilded.png
-assets/seals/sterling.png
-assets/seals/flicker.png
-assets/seals/ash.png
+title, author, coverUrl, decree, publicationStatus,
+premise, grantedEntryBecause, featuredQuote, lingeringEchoes,
+hiddenEmber, hiddenBeyondTheVeil,
+atmosphere, overlayColor, overlayOpacity, spotifyUrl, customAudioUrl,
+altarStatus, customSlug, sortOrder,
+amazonUS, amazonCA, amazonUK, amazonIN, amazonAU,
+bookshopUS, bookshopUK, indigo, goodreads, authorWebsite,
+customLink1Label, customLink1Url,
+customLink2Label, customLink2Url,
+customLink3Label, customLink3Url
 ```
 
-Seal is assigned automatically based on decree. A record can also use a custom seal override.
+Use `||` to separate multiple Lingering Echoes.
 
-## Contact / email with MailerLite
+## Deployment advice
 
-The contact chamber now does three things:
+Test this on a preview branch before merging to main.
 
-1. Stores contact submissions in Netlify Blobs.
-2. Posts the same submission to Netlify Forms, so you can use Netlify's form dashboard/notifications.
-3. If the visitor checks the updates consent box, adds/updates them in MailerLite under **Sanctum Updates**.
-
-Set these Netlify environment variables:
-
-```text
-ADMIN_KEY=your-private-admin-passphrase
-MAILERLITE_API_KEY=your-mailerlite-api-key
-MAILERLITE_GROUP_NAME=Sanctum Updates
-```
-
-Optional, but recommended once you find the group ID in MailerLite:
-
-```text
-MAILERLITE_GROUP_ID=your-mailerlite-group-id
-```
-
-If `MAILERLITE_GROUP_ID` is not set, the function tries to find a group named `Sanctum Updates`; if it cannot find one, it will attempt to create it.
-
-Important: MailerLite is used for subscriber capture and welcome/update automations. Direct owner notifications are handled through Netlify Forms notifications unless you add a separate transactional email service later.
+1. Create branch `v51-preview` from `main`.
+2. Upload the full contents of this ZIP to that branch.
+3. Create a pull request.
+4. Test Netlify Deploy Preview.
+5. Merge only after testing.
 
 ## Notes
 
-- Keep background videos optimized, ideally under 10–20 MB.
-- Use Cloudinary optimized image URLs for large cover libraries.
-- Export JSON backups regularly from admin.
-
-## Netlify Blobs required env vars
-If `/.netlify/functions/sanctum-data` shows a Blobs environment error, confirm these exact env vars are set and redeploy with Clear cache:
-
-- `NETLIFY_SITE_ID`
-- `NETLIFY_AUTH_TOKEN`
-- `ADMIN_KEY`
-
-The functions now pass `siteID` and `token` explicitly to Netlify Blobs.
+The data function reads from the new `sanctum-state-v51` Blob key and falls back to legacy `sanctum-state-v31`, so existing saved data should load and migrate in the browser.
