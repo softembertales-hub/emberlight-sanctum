@@ -32,7 +32,7 @@ function applyAtmosphere(rec){
   if(visual){ const v=assetUrl(visual); if(/\.mp4|\.webm|\.mov/i.test(v)) media.innerHTML=`<video src="${esc(v)}" autoplay muted loop playsinline></video>`; else media.innerHTML=`<img src="${esc(v)}" alt="">`; }
   else media.innerHTML='';
   media.style.filter=blur?`blur(${blur}px)`:'';
-  tint.style.background=`linear-gradient(135deg, rgba(16,10,17,${Math.min(.92,Math.max(.35,opacity+.14))}), ${hexToRgba(tintColor, opacity)}), radial-gradient(circle at 50% 15%, ${hexToRgba(tintColor,.26)}, transparent 42%)`;
+  tint.style.background=`linear-gradient(135deg, rgba(16,10,17,${Math.min(.92,Math.max(0,opacity+.08))}), ${hexToRgba(tintColor, opacity)}), radial-gradient(circle at 50% 15%, ${hexToRgba(tintColor,Math.min(.26, opacity*.55+.06))}, transparent 42%)`;
   if(rec) state.pageAudio = rec.spotifyUrl ? '' : (rec.customAudioUrl || def.audio || '');
 }
 function hexToRgba(hex,a){ const h=String(hex||'#2f1c36').replace('#',''); const full=h.length===3?h.split('').map(x=>x+x).join(''):h; const n=parseInt(full,16); if(Number.isNaN(n)) return `rgba(47,28,54,${a})`; return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`; }
