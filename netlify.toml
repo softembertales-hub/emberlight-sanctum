@@ -1,6 +1,17 @@
 [build]
   publish = "."
   functions = "netlify/functions"
+
+[[redirects]]
+  from = "/archives"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/records/*"
+  to = "/index.html"
+  status = 200
+
 [[headers]]
   for = "/assets/*"
   [headers.values]
