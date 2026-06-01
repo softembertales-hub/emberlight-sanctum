@@ -1,1 +1,5 @@
-{"scripts":{"dev":"netlify dev","start":"netlify dev"},"dependencies":{"@netlify/blobs":"latest"},"devDependencies":{}}
+{
+  "scripts": {"dev":"netlify dev","start":"netlify dev"},
+  "dependencies": {"@netlify/blobs":"latest"},
+  "devDependencies": {}
+}
