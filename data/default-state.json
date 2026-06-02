@@ -1,66 +1,192 @@
 {
-  "version":"5.1.0",
-  "updatedAt":"2026-05-31T00:00:00.000Z",
-  "settings":{
-    "siteTitle":"The Emberlight Sanctum",
-    "tagline":"For stories that wait to be remembered.",
-    "subtitle":"For stories that wait to be remembered.",
-    "thresholdUrl":"",
-    "instagramUrl":"",
-    "sanctumLogo":"assets/logos/sanctum-logo.png",
-    "footerLogo":"assets/logos/sanctum-logo.png",
-    "favicon":"assets/logos/favicon.png",
-    "homepageAudio":"",
-    "altarAudio":"",
-    "archiveTransitionAudio":"",
-    "audioEnabled":true,
-    "audioDefaultMuted":true,
-    "audioVolume":0.25,
-    "correspondenceEmail":"softembertales@gmail.com",
-    "correspondenceSuccess":"Your message has found its way to the Sanctum.\n\nThank you for writing.\n\nThe Archivist reads every correspondence, and each is appreciated.",
-    "mailerLiteGroupName":"Sanctum Updates",
-    "cloudinary":{"cloudName":"","uploadPreset":""},
-    "seals":{"Gilded":"assets/seals/gilded.png","Sterling":"assets/seals/sterling.png","Flicker":"assets/seals/flicker.png","Ash":"assets/seals/ash.png"},
-    "atmospheres":{
-      "Default":{"label":"Default","description":"Quiet archive.","visual":"","audio":"","defaultTint":"#2f1c36"},
-      "Embers":{"label":"Embers","description":"Warmth, hope, found family, comfort.","visual":"","audio":"","defaultTint":"#c97524"},
-      "Celestial":{"label":"Celestial","description":"Wonder, myth, epic fantasy, awe.","visual":"","audio":"","defaultTint":"#7d75c9"},
-      "Shadow":{"label":"Shadow","description":"Obsession, intrigue, dark romance, thriller.","visual":"","audio":"","defaultTint":"#4b214f"},
-      "Forest":{"label":"Forest","description":"Journey, discovery, adventure.","visual":"","audio":"","defaultTint":"#2f5a3b"},
-      "Storm":{"label":"Storm","description":"Turmoil, grief, catharsis.","visual":"","audio":"","defaultTint":"#445069"},
-      "Royal":{"label":"Royal","description":"Power, courts, political intrigue.","visual":"","audio":"","defaultTint":"#7a4a21"},
-      "Dreamscape":{"label":"Dreamscape","description":"Whimsy, imagination, surreal beauty.","visual":"","audio":"","defaultTint":"#7d4c8f"},
-      "Hearth":{"label":"Hearth","description":"Reflection, wisdom, memoir, literary fiction, nonfiction.","visual":"","audio":"","defaultTint":"#9a7048"}
+  "version": "5.10.0",
+  "updatedAt": "2026-05-31T00:00:00.000Z",
+  "settings": {
+    "siteTitle": "The Emberlight Sanctum",
+    "tagline": "For stories that wait to be remembered.",
+    "subtitle": "For stories that wait to be remembered.",
+    "thresholdUrl": "",
+    "instagramUrl": "",
+    "sanctumLogo": "assets/logos/sanctum-logo.png",
+    "footerLogo": "assets/logos/sanctum-logo.png",
+    "favicon": "assets/logos/favicon.png",
+    "homepageAudio": "",
+    "altarAudio": "",
+    "archiveTransitionAudio": "",
+    "audioEnabled": true,
+    "audioDefaultMuted": true,
+    "audioVolume": 0.25,
+    "correspondenceEmail": "softembertales@gmail.com",
+    "correspondenceSuccess": "Your message has found its way to the Sanctum.\n\nThank you for writing.\n\nThe Archivist reads every correspondence, and each is appreciated.",
+    "cloudinary": {
+      "cloudName": "",
+      "uploadPreset": ""
+    },
+    "seals": {
+      "Gilded": "assets/seals/gilded.png",
+      "Sterling": "assets/seals/sterling.png",
+      "Flicker": "assets/seals/flicker.png",
+      "Ash": "assets/seals/ash.png"
+    },
+    "atmospheres": {
+      "Default": {
+        "label": "Default",
+        "description": "Quiet archive.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#2f1c36"
+      },
+      "Embers": {
+        "label": "Embers",
+        "description": "Warmth, hope, found family, comfort.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#c97524"
+      },
+      "Celestial": {
+        "label": "Celestial",
+        "description": "Wonder, myth, epic fantasy, awe.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#7d75c9"
+      },
+      "Shadow": {
+        "label": "Shadow",
+        "description": "Obsession, intrigue, dark romance, thriller.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#4b214f"
+      },
+      "Forest": {
+        "label": "Forest",
+        "description": "Journey, discovery, adventure.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#2f5a3b"
+      },
+      "Storm": {
+        "label": "Storm",
+        "description": "Turmoil, grief, catharsis.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#445069"
+      },
+      "Royal": {
+        "label": "Royal",
+        "description": "Power, courts, political intrigue.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#7a4a21"
+      },
+      "Dreamscape": {
+        "label": "Dreamscape",
+        "description": "Whimsy, imagination, surreal beauty.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#7d4c8f"
+      },
+      "Hearth": {
+        "label": "Hearth",
+        "description": "Reflection, wisdom, memoir, literary fiction, nonfiction.",
+        "visual": "",
+        "audio": "",
+        "defaultTint": "#9a7048"
+      }
+    },
+    "collectionsEnabled": false,
+    "archiveWhisper": {
+      "enabled": false,
+      "label": "The Archives Whisper",
+      "url": "",
+      "placements": {
+        "home": false,
+        "archives": false,
+        "records": false,
+        "footer": false
+      }
+    },
+    "fieldLabels": {
+      "premise": "The Premise",
+      "grantedEntryBecause": "Granted Entry Because",
+      "featuredQuote": "Featured Quote",
+      "lingeringEchoes": "Lingering Echoes",
+      "hiddenEmber": "Hidden Ember",
+      "hiddenBeyondTheVeil": "Hidden Beyond the Veil",
+      "seekRecord": "Seek the Record",
+      "shareThoughts": "Share Your Thoughts",
+      "writeArchivist": "Write to the Archivist",
+      "series": "Series",
+      "additionalFields": "Additional Notes"
+    },
+    "decreeSettings": {
+      "Gilded": {
+        "title": "Gilded Decree",
+        "description": "Exceptional resonance. Among the highest preserved records."
+      },
+      "Sterling": {
+        "title": "Sterling Decree",
+        "description": "Strong resonance. Granted sanctuary within the Sanctum."
+      },
+      "Flicker": {
+        "title": "Flicker Decree",
+        "description": "Recorded in the Scout's Ledger."
+      },
+      "Ash": {
+        "title": "Ash Decree",
+        "description": "Recorded, but not admitted to the Sanctum."
+      }
     }
   },
-  "records":[
+  "records": [
     {
-      "id":"sample-flameheart",
-      "title":"Flameheart",
-      "author":"Dalton Bequette",
-      "coverUrl":"",
-      "decree":"Gilded",
-      "publicationStatus":"Published",
-      "premise":"A sample preserved record used to test the Sanctum layout.",
-      "grantedEntryBecause":"This record is preserved as a sample of how a Sanctum admission can explain why a story earned its place here.",
-      "featuredQuote":"A story can remain long after the final page.",
-      "lingeringEchoes":["A story can remain long after the final page."],
-      "hiddenEmber":"This is a Sanctum-only note. It appears only when you choose to add one.",
-      "hiddenBeyondTheVeil":"This optional section is concealed by default and should be used only for spoilers.",
-      "atmosphere":"Auto",
-      "overlayColor":"Auto",
-      "overlayOpacity":"Auto",
-      "spotifyUrl":"",
-      "customAudioUrl":"",
-      "altarStatus":"Honored Record",
-      "customSlug":"flameheart",
-      "sortOrder":1,
-      "amazonUS":"","amazonCA":"","amazonUK":"","amazonIN":"","amazonAU":"",
-      "bookshopUS":"","bookshopUK":"","indigo":"","goodreads":"","authorWebsite":"",
-      "customLink1Label":"","customLink1Url":"","customLink2Label":"","customLink2Url":"","customLink3Label":"","customLink3Url":"",
-      "createdAt":"2026-05-31T00:00:00.000Z",
-      "updatedAt":"2026-05-31T00:00:00.000Z"
+      "id": "sample-flameheart",
+      "title": "Flameheart",
+      "author": "Dalton Bequette",
+      "coverUrl": "",
+      "decree": "Gilded",
+      "publicationStatus": "Published",
+      "premise": "A sample preserved record used to test the Sanctum layout.",
+      "grantedEntryBecause": "This record is preserved as a sample of how a Sanctum admission can explain why a story earned its place here.",
+      "featuredQuote": "A story can remain long after the final page.",
+      "lingeringEchoes": [
+        "A story can remain long after the final page."
+      ],
+      "hiddenEmber": "This is a Sanctum-only note. It appears only when you choose to add one.",
+      "hiddenBeyondTheVeil": "This optional section is concealed by default and should be used only for spoilers.",
+      "atmosphere": "Auto",
+      "overlayColor": "Auto",
+      "overlayOpacity": "Auto",
+      "spotifyUrl": "",
+      "customAudioUrl": "",
+      "altarStatus": "Honored Record",
+      "customSlug": "flameheart",
+      "sortOrder": 1,
+      "amazonUS": "",
+      "amazonCA": "",
+      "amazonUK": "",
+      "amazonIN": "",
+      "amazonAU": "",
+      "bookshopUS": "",
+      "bookshopUK": "",
+      "indigo": "",
+      "goodreads": "",
+      "authorWebsite": "",
+      "customLink1Label": "",
+      "customLink1Url": "",
+      "customLink2Label": "",
+      "customLink2Url": "",
+      "customLink3Label": "",
+      "customLink3Url": "",
+      "createdAt": "2026-05-31T00:00:00.000Z",
+      "updatedAt": "2026-05-31T00:00:00.000Z",
+      "seriesName": "",
+      "bookNumber": "",
+      "seriesStatus": "",
+      "seriesNote": "",
+      "additionalFields": [],
+      "collections": []
     }
   ],
-  "messages":[]
+  "messages": [],
+  "collections": []
 }
